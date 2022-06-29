@@ -12,23 +12,39 @@
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-   
+   Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="900" Width="1400">
-    <Grid>
-        <Grid.RowDefinitions>
+    <Border CornerRadius="52" BorderThickness="10" BorderBrush="White">
+
+        <Border CornerRadius="35" BorderThickness="20">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#d4a373" Offset="0.0"/>
+
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Grid>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#d4a373" Offset="0.0"/>
+
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
             <RowDefinition  Height="6*"></RowDefinition>
             <RowDefinition  Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-
-            <StackPanel Orientation="Horizontal" Background="green" Grid.Row="1">
+             
+                        <StackPanel Orientation="Horizontal" Background="#d4a373" Grid.Row="1">
                 <Border BorderThickness="20">
                     <Label FontSize="50" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center">Single</Label>
                 </Border>
                 <Border BorderThickness="20">
                     <Viewbox Height="50">
                         <ToggleButton
-
+Background="#fefae0"
   ToolTip="MaterialDesignSwitchToggleButton"
   IsChecked="{Binding Istoggle}"  />
                     </Viewbox>
@@ -43,7 +59,7 @@
                 <Border BorderThickness="20"  >
                     <Grid 
  >
-                        <Button Height="80" Width="200"  Margin="100,0,0,0"
+                    <Button Height="80" Width="200"  Margin="100,0,0,0" Background="#faedcd"
     Style="{StaticResource MaterialDesignRaisedLightButton}"
    Command="{Binding StartButton}"
     ToolTip="MaterialDesignRaisedLightButton with Round Corners"
@@ -54,14 +70,25 @@
                     </Grid>
                 </Border>
             </StackPanel>
-        <StackPanel Background="Red" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Grid.Row="0">
+               
+    <Border CornerRadius="52" BorderThickness="10" BorderBrush="White">
+
+        <Border CornerRadius="35" BorderThickness="20">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#fefae0" Offset="0.0"/>
+
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <StackPanel Background="#fefae0" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Grid.Row="0">
             <ListView HorizontalContentAlignment="Center" Foreground="Black"   ItemsSource="{Binding cars,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="800" >
                 <ListView.View >
                     <GridView  >
-                        <GridViewColumn  Header="image"  Width="200" >
+                        
+                        <GridViewColumn  Header="image"  Width="200"  >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding imageurl}" Height="200" Width="200"/>
+                                    <Image Source="{Binding imageurl}" Height="200" Width="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -86,7 +113,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Vendor" Width="200" >
+                        <GridViewColumn Header="Vin" Width="200" >
                             <GridViewColumn.CellTemplate >
                                 <DataTemplate >
                                     <TextBlock Text="{Binding Vin}" Padding="0,70,0,0" />
@@ -111,8 +138,11 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button HorizontalAlignment="Right" Margin="5,5,5,5"  Background="{DynamicResource esascolor}" 
-        Content="Add Row"  />
+          
         </StackPanel>
-    </Grid>
+                    </Border>
+                </Border>
+            </Grid>
+        </Border>
+    </Border>
 </Window>
