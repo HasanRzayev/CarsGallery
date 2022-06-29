@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarsGallery" xmlns:viewmodels="clr-namespace:CarsGallery.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
-           WindowStartupLocation="CenterScreen"
-
-           TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        WindowStartupLocation="CenterScreen" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:fa="http://schemas.fontawesome.io/icons/"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-   Background="Transparent"
-     FontFamily="{DynamicResource MaterialDesignFont}"
+  AllowsTransparency="True"
+        Background="Transparent"     FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStyle="None"
+        ResizeMode="NoResize"
         Title="MainWindow" Height="900" Width="1400">
     <Border CornerRadius="52" BorderThickness="10" BorderBrush="White">
 
@@ -33,11 +34,12 @@
                 </LinearGradientBrush>
             </Grid.Background>
             <Grid.RowDefinitions>
+
             <RowDefinition  Height="6*"></RowDefinition>
-            <RowDefinition  Height="1*"></RowDefinition>
+            <RowDefinition  Height="1.5*"></RowDefinition> 
         </Grid.RowDefinitions>
-             
-                        <StackPanel Orientation="Horizontal" Background="#d4a373" Grid.Row="1">
+               
+                <StackPanel Orientation="Horizontal" Background="#d4a373" Grid.Row="1">
                 <Border BorderThickness="20">
                     <Label FontSize="50" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center">Single</Label>
                 </Border>
@@ -68,10 +70,19 @@ Background="#fefae0"
       Text="Start"  FontSize="50"/>
                         </Button>
                     </Grid>
+                    
                 </Border>
-            </StackPanel>
-               
-    <Border CornerRadius="52" BorderThickness="10" BorderBrush="White">
+                    <Border BorderThickness="20"  >
+                        <Button Background="#e63946"  HorizontalAlignment="Right" Height="70" Width="70"
+  Style="{StaticResource MaterialDesignIconForegroundButton}"
+  ToolTip="MaterialDesignIconForegroundButton"  Click="Button_Click"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        <materialDesign:PackIcon Kind="Power" Foreground="White"  Height="50"/>
+                    </Button>
+                    </Border>
+                </StackPanel>
+
+                <Border CornerRadius="52" BorderThickness="10" BorderBrush="White" Grid.Row="0">
 
         <Border CornerRadius="35" BorderThickness="20">
             <Border.BorderBrush>
@@ -80,8 +91,8 @@ Background="#fefae0"
 
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <StackPanel Background="#fefae0" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Grid.Row="0">
-            <ListView HorizontalContentAlignment="Center" Foreground="Black"   ItemsSource="{Binding cars,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="800" >
+            <StackPanel Background="#fefae0" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" >
+            <ListView HorizontalContentAlignment="Center" Foreground="Black"    ItemsSource="{Binding cars,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="650" >
                 <ListView.View >
                     <GridView  >
                         

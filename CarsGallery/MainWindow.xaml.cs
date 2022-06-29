@@ -26,5 +26,10 @@ namespace CarsGallery
             InitializeComponent();
             DataContext=new MainViewModel();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
