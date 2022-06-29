@@ -1,0 +1,118 @@
+﻿<Window x:Class="CarsGallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarsGallery" xmlns:viewmodels="clr-namespace:CarsGallery.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        mc:Ignorable="d"
+           WindowStartupLocation="CenterScreen"
+
+           TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+   
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="MainWindow" Height="900" Width="1400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="6*"></RowDefinition>
+            <RowDefinition  Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Background="green" Grid.Row="1">
+                <Border BorderThickness="20">
+                    <Label FontSize="50" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center">Single</Label>
+                </Border>
+                <Border BorderThickness="20">
+                    <Viewbox Height="50">
+                        <ToggleButton
+
+  ToolTip="MaterialDesignSwitchToggleButton"
+  IsChecked="{Binding Istoggle}"  />
+                    </Viewbox>
+                   
+                </Border>
+                <Border BorderThickness="20">
+                    <Label FontSize="50" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center">Multi</Label>
+                </Border>
+                <Border BorderThickness="20">
+                <Label FontSize="50" FontFamily="Comic Sans MS" Margin="50,0,0,0" Content="{Binding Vaxt}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                </Border>
+                <Border BorderThickness="20"  >
+                    <Grid 
+ >
+                        <Button Height="80" Width="200"  Margin="100,0,0,0"
+    Style="{StaticResource MaterialDesignRaisedLightButton}"
+   Command="{Binding StartButton}"
+    ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            <TextBlock
+      Text="Start"  FontSize="50"/>
+                        </Button>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        <StackPanel Background="Red" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Grid.Row="0">
+            <ListView HorizontalContentAlignment="Center" Foreground="Black"   ItemsSource="{Binding cars,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="800" >
+                <ListView.View >
+                    <GridView  >
+                        <GridViewColumn  Header="image"  Width="200" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding imageurl}" Height="200" Width="200"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Vendor" Width="200" >
+                            <GridViewColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock Text="{Binding Vendor}"  Padding="0,70,0,0" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Model" Width="200" >
+                            <GridViewColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock Text="{Binding Model}"  Padding="0,70,0,0"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Type" Width="200" >
+                            <GridViewColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock Text="{Binding Type}" Padding="0,70,0,0" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Vendor" Width="200" >
+                            <GridViewColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock Text="{Binding Vin}" Padding="0,70,0,0" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Fuel" Width="200" >
+                            <GridViewColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock Text="{Binding Fuel}" Padding="0,70,0,0" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Year" Width="200" >
+                            <GridViewColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock Text="{Binding Year}" Padding="0,70,0,0" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button HorizontalAlignment="Right" Margin="5,5,5,5"  Background="{DynamicResource esascolor}" 
+        Content="Add Row"  />
+        </StackPanel>
+    </Grid>
+</Window>
